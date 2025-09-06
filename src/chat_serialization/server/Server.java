@@ -3,8 +3,6 @@ package chat_serialization.server;
 import chat_serialization.config.Config;
 import chat_serialization.logger.Logger;
 import chat_serialization.utils.TextMassage;
-import chat_xml.serverXml.ClientHandlerXml;
-import chat_xml.serverXml.ServerXml;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -22,16 +20,13 @@ public class Server  {
     public static Config cfg;
     public static Logger log;
 
-    public Server() throws IOException {
-        log = new Logger();
-        cfg  = new Config("chatXml.configXml.properties");
-    }
-
     public static void main(String[] args) throws IOException {
         try {
+            log = new Logger();
+            cfg  = new Config("chatXml.configXml.properties");
             server = new ServerSocket(cfg.getPort());
 
-            System.out.println("ServerXml started");
+            System.out.println("Server started");
 
             new Thread(Server::readClients, "timeout-cleaner").start();
 
@@ -57,7 +52,7 @@ public class Server  {
             client.getOutput().writeObject(msg);
             client.getOutput().flush();
         }
-        ServerXml.log.info("отправлено сообщение всем " + msg);
+        Server.log.info("отправлено сообщение всем " + msg);
 
     }
 

@@ -1,7 +1,6 @@
 package chat_serialization.server;
 import chat_serialization.utils.FileMassage;
 import chat_serialization.utils.TextMassage;
-import chat_xml.serverXml.ServerXml;
 
 import java.io.*;
 import java.net.Socket;

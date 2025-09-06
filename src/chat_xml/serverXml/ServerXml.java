@@ -29,7 +29,7 @@ public class ServerXml {
             //Поток для читания
             new Thread(ServerXml::readClients, "timeout-cleaner").start();
 
-            System.out.println("ServerXml started");
+            System.out.println("Server started");
             int count = 0;
             while (server != null && server.isBound() && !server.isClosed() && (count <= cfg.getMaxConnections())) {
                 Socket clientSocket = server.accept();
